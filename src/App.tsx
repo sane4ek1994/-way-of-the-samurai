@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import { Header, Navbar, Footer } from './components'
 import { Messages, Profile, News, SettingPage, Music } from './pages'
 
-import './app.css'
+import './App.css'
 
 function App(props: any) {
   return (
