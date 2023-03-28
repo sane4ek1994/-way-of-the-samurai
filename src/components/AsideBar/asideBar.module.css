@@ -1,0 +1,14 @@
+.friends__title {
+  font-size: 16px;
+  font-weight: normal;
+  text-align: start;
+  color: white;
+}
+
+.friends__list {
+  padding: 0 7px;
+  display: flex;
+  justify-content: flex-start;
+  list-style-type: none;
+  flex-wrap: wrap;
+}

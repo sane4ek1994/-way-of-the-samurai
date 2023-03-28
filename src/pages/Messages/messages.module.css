@@ -1,0 +1,34 @@
+.dialogs {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+}
+
+.dialog__avatar {
+  margin-right: 10px;
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  background-position: center;
+  border-radius: 50%;
+}
+
+.dialogs__item {
+  padding: 10px;
+}
+
+.dialog {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+}
+
+.active {
+  color: gold;
+}
+
+.messages__item {
+  padding: 10px;
+}

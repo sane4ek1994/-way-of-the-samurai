@@ -1,0 +1,21 @@
+.post {
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.new_post {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.post__input {
+  margin-bottom: 5px;
+  padding: 5px 3px;
+  width: 300px;
+  resize: none;
+  background-color: beige;
+}

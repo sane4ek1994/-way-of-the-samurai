@@ -1,0 +1,22 @@
+.friends__item {
+  margin-right: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.friends__item:last-child {
+  margin-right: 0;
+}
+
+.friends__item img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  background-position: center;
+  border-radius: 50%;
+}
+
+.friends__name {
+  text-align: center;
+  font-size: 12px;
+}
