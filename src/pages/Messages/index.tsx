@@ -15,7 +15,7 @@ interface IMessages {
 
 export const Messages = (props: IMessages) => {
   let newMessage = useRef<HTMLTextAreaElement>(null)
-  const newMessageBody = props.store.getState().dialogsPage.newMessageBody
+  const newMessageBody = props.store.getState().dialogsReducer.newMessageBody
 
   const updateNewMessageBody = () => {
     let message = newMessage.current?.value

@@ -8,15 +8,15 @@ function App(props: any) {
   return (
     <div className='app-wrapper'>
       <Header />
-      <Navbar friendsData={props.state.asideBlock.friendsData} />
+      <Navbar friendsData={props.state.asideReducer.friendsData} />
       <main className='main'>
         <Routes>
           <Route
             path='/'
             element={
               <Profile
-                posts={props.state.postsPage.postData}
-                postText={props.state.postsPage.postText}
+                posts={props.state.postReducer.postData}
+                postText={props.state.postReducer.postText}
                 dispatch={props.dispatch}
               />
             }
@@ -27,8 +27,8 @@ function App(props: any) {
               <Messages
                 store={props.store}
                 dispatch={props.dispatch}
-                dialogs={props.state.dialogsPage.dialogsData}
-                messages={props.state.dialogsPage.messages}
+                dialogs={props.state.dialogsReducer.dialogsData}
+                messages={props.state.dialogsReducer.messages}
               />
             }
           />
