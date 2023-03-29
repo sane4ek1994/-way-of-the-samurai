@@ -1,8 +1,8 @@
+import { log } from 'console'
 import { useRef } from 'react'
 
 import { DialogItem, TDialogItem } from './DialogItem'
 import { MessageItem, TMessageItem } from './MessageItem'
-import { updateNewMessageBodyCreator, sendMessageCreator } from '../../redux/reducers'
 
 import styles from './messages.module.css'
 
@@ -13,17 +13,16 @@ interface IMessages {
   dispatch: (obj: Object) => void
 }
 
-export const Messages = (props: IMessages) => {
+export const Messages = (props: any) => {
   let newMessage = useRef<HTMLTextAreaElement>(null)
-  const newMessageBody = props.store.getState().dialogsReducer.newMessageBody
 
   const updateNewMessageBody = () => {
-    let message = newMessage.current?.value
-    props.dispatch(updateNewMessageBodyCreator(message))
+    let message = newMessage.current?.value || ''
+    props.updateNewMessageBody(message)
   }
 
   const onSendMessageClick = () => {
-    props.dispatch(sendMessageCreator())
+    props.onSendMessageClick()
   }
 
   return (
@@ -35,11 +34,11 @@ export const Messages = (props: IMessages) => {
       </div>
       <div className={styles.messages__item}>
         {props.messages.map((message: TMessageItem) => (
-          <MessageItem dispatch={props.dispatch} key={message.id} message={message.message} id={''} />
+          <MessageItem key={message.id} message={message.message} id={''} />
         ))}
         <textarea
           ref={newMessage}
-          value={newMessageBody}
+          value={props.newMessageBody}
           onChange={updateNewMessageBody}
           placeholder='Write a message...'
         />
