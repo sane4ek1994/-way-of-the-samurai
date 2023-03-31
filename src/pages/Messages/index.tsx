@@ -1,4 +1,3 @@
-import { log } from 'console'
 import { useRef } from 'react'
 
 import { DialogItem, TDialogItem } from './DialogItem'
@@ -6,12 +5,12 @@ import { MessageItem, TMessageItem } from './MessageItem'
 
 import styles from './messages.module.css'
 
-interface IMessages {
-  dialogs: TDialogItem[]
-  messages: TMessageItem[]
-  store: any
-  dispatch: (obj: Object) => void
-}
+// interface IMessages {
+//   dialogs: TDialogItem[]
+//   messages: TMessageItem[]
+//   store: any
+//   dispatch: (obj: Object) => void
+// }
 
 export const Messages = (props: any) => {
   let newMessage = useRef<HTMLTextAreaElement>(null)
