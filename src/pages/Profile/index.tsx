@@ -1,4 +1,5 @@
-import { MyPostsContainer, ProfileImage, ProfileInfo } from '../../components'
+import { ProfileImage, ProfileInfo } from '../../components'
+import { MyPostsContainer } from '../../components/MyPosts/MyPostsContainer'
 
 export const Profile = (props: any) => {
   return (

@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import { Header, Navbar, Footer } from './components'
-import { MessagesContainer, Profile, News, SettingPage, Music } from './pages'
+import { Profile, News, SettingPage, Music } from './pages'
+import { MessagesContainer } from './pages/Messages/MessagesContainer'
 
 import './App.css'
 
