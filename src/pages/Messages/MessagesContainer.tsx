@@ -1,26 +1,20 @@
 import { Messages } from '.'
+import { connect } from 'react-redux'
 import { updateNewMessageBodyCreator, sendMessageCreator } from '../../redux/reducers'
 
-export const MessagesContainer = (props: any) => {
-  const newMessageBody = props.store.getState().dialogsReducer.newMessageBody
-  const dialogsList = props.store.getState().dialogsReducer.dialogsData
-  const messages = props.store.getState().dialogsReducer.messages
-
-  const updateNewMessageBody = (message: string) => {
-    props.store.dispatch(updateNewMessageBodyCreator(message))
+const mapStateToProps = (state: any) => {
+  return {
+    newMessageBody: state.dialogsReducer.newMessageBody,
+    dialogs: state.dialogsReducer.dialogsData,
+    messages: state.dialogsReducer.messages
   }
-
-  const onSendMessageClick = () => {
-    props.store.dispatch(sendMessageCreator())
-  }
-
-  return (
-    <Messages
-      newMessageBody={newMessageBody}
-      onSendMessageClick={onSendMessageClick}
-      updateNewMessageBody={updateNewMessageBody}
-      messages={messages}
-      dialogs={dialogsList}
-    />
-  )
 }
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    updateNewMessageBody: (message: string) => dispatch(updateNewMessageBodyCreator(message)),
+    onSendMessageClick: () => dispatch(sendMessageCreator())
+  }
+}
+
+export const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Messages)

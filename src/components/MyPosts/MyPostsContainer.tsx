@@ -1,24 +1,19 @@
+import { connect } from 'react-redux'
 import { MyPosts } from '.'
 import { addPostsActionCreator, setChangeTextActionCreator } from '../../redux/reducers'
 
-export const MyPostsContainer = (props: any) => {
-  const state = props.store.getState()
-
-  const addPosts = () => {
-    props.store.dispatch(addPostsActionCreator())
+const mapStateToProps = (state: any) => {
+  return {
+    posts: state.postReducer.postData,
+    postText: state.postReducer.postText
   }
-
-  const setChangeText = (textPost: string) => {
-    const action = setChangeTextActionCreator(textPost)
-    props.store.dispatch(action)
-  }
-
-  return (
-    <MyPosts
-      addPosts={addPosts}
-      posts={state.postReducer.postData}
-      postText={state.postReducer.postText}
-      setChangeText={setChangeText}
-    />
-  )
 }
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    addPosts: () => dispatch(addPostsActionCreator()),
+    setChangeText: (textPost: string) => dispatch(setChangeTextActionCreator(textPost))
+  }
+}
+
+export const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
