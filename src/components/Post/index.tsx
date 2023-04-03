@@ -1,6 +1,7 @@
 import styles from './post.module.css'
 
 export type TPost = {
+  id: string
   text: string
   src: string
 }

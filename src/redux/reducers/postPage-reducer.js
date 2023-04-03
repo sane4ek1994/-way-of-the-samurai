@@ -4,11 +4,13 @@ const UPDATE_POST_TEXT = 'UPDATE_POST_TEXT'
 const initialState = {
   postData: [
     {
+      id: '1',
       src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK_YOcpPB1PxeJtAIyasitboh8RKkSFcCmNw&usqp=CAU',
       text: 'Hello! I Alex!'
     },
-    { src: 'https://img3.goodfon.ru/wallpaper/nbig/8/cd/spanch-bob-gubka-bob.jpg', text: 'QQ' },
+    { id: '2', src: 'https://img3.goodfon.ru/wallpaper/nbig/8/cd/spanch-bob-gubka-bob.jpg', text: 'QQ' },
     {
+      id: '3',
       src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxvwaJplxvK3UtOeCatI2g-gJCt-xRwo1C8g&usqp=CAU',
       text: 'What is your nature name?'
     }
@@ -18,25 +20,25 @@ const initialState = {
 
 export const postReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_POST: {
+    case ADD_POST:
       const newPost = {
+        id: `${Date.now()}`,
         src: 'https://img3.goodfon.ru/wallpaper/nbig/8/cd/spanch-bob-gubka-bob.jpg',
         text: state.postText
       }
 
-      const stateCopy = { ...state }
+      return {
+        ...state,
+        postData: [...state.postData, newPost],
+        postText: ''
+      }
 
-      stateCopy.postData = [...state.postData]
-      stateCopy.postData.push(newPost)
-      stateCopy.postText = ''
-      return stateCopy
-    }
-    case UPDATE_POST_TEXT: {
-      const stateCopy = { ...state }
+    case UPDATE_POST_TEXT:
+      return {
+        ...state,
+        postText: action.textPost
+      }
 
-      stateCopy.postText = action.textPost
-      return stateCopy
-    }
     default:
       return state
   }
