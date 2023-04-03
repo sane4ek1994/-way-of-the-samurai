@@ -18,18 +18,25 @@ const initialState = {
 
 export const postReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_POST:
+    case ADD_POST: {
       const newPost = {
         src: 'https://img3.goodfon.ru/wallpaper/nbig/8/cd/spanch-bob-gubka-bob.jpg',
         text: state.postText
       }
 
-      state.postData.push(newPost)
-      state.postText = ''
-      return state
-    case UPDATE_POST_TEXT:
-      state.postText = action.textPost
-      return state
+      const stateCopy = { ...state }
+
+      stateCopy.postData = [...state.postData]
+      stateCopy.postData.push(newPost)
+      stateCopy.postText = ''
+      return stateCopy
+    }
+    case UPDATE_POST_TEXT: {
+      const stateCopy = { ...state }
+
+      stateCopy.postText = action.textPost
+      return stateCopy
+    }
     default:
       return state
   }
