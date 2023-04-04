@@ -1,6 +1,7 @@
 import styles from './friendsItem.module.css'
 
 export type TFriends = {
+  id: string
   src: string
   name: string
 }

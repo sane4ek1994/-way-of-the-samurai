@@ -5,11 +5,12 @@ import { MessagesContainer } from './pages/Messages/MessagesContainer'
 
 import './App.css'
 
-function App(props: any) {
+const App = (props: any) => {
+  const friendsData = props.store.getState().asideReducer.friendsData
   return (
     <div className='app-wrapper'>
       <Header />
-      <Navbar friendsData={props.state.asideReducer.friendsData} />
+      <Navbar friendsData={friendsData} />
       <main className='main'>
         <Routes>
           <Route path='/' element={<Profile store={props.store} />} />
