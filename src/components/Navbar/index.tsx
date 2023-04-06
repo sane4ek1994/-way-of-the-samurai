@@ -13,6 +13,11 @@ export const Navbar = (props: any) => {
           </NavLink>
         </li>
         <li className={styles.nav_list__item}>
+          <NavLink to='/users' className={({ isActive }) => (isActive ? styles.active : styles.nav_list__link)}>
+            Friends users
+          </NavLink>
+        </li>
+        <li className={styles.nav_list__item}>
           <NavLink to='/messages' className={({ isActive }) => (isActive ? styles.active : styles.nav_list__link)}>
             Messages
           </NavLink>
