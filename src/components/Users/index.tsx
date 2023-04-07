@@ -2,7 +2,7 @@ export const Users = (props: any) => {
   if (props.users.length === 0) {
     props.setUsers([
       {
-        id: `1`,
+        id: '1',
         isFollow: true,
         avatarSrc:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEdaR-n2haIJL-Ys0ZZKADyIdAzG_RUWX4sg&usqp=CAU',
@@ -11,7 +11,7 @@ export const Users = (props: any) => {
         location: { city: 'Zarechniy', country: 'Russia' }
       },
       {
-        id: `2`,
+        id: '2',
         isFollow: false,
         avatarSrc:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEdaR-n2haIJL-Ys0ZZKADyIdAzG_RUWX4sg&usqp=CAU',
@@ -20,7 +20,7 @@ export const Users = (props: any) => {
         location: { city: 'Penza', country: 'Russia' }
       },
       {
-        id: `3`,
+        id: '3',
         isFollow: true,
         avatarSrc:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEdaR-n2haIJL-Ys0ZZKADyIdAzG_RUWX4sg&usqp=CAU',
@@ -29,7 +29,7 @@ export const Users = (props: any) => {
         location: { city: 'Berlin', country: 'Germany' }
       },
       {
-        id: `4`,
+        id: '4',
         isFollow: false,
         avatarSrc:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEdaR-n2haIJL-Ys0ZZKADyIdAzG_RUWX4sg&usqp=CAU',
