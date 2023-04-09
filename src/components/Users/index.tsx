@@ -4,7 +4,6 @@ export const Users = (props: any) => {
   const getUsers = () => {
     if (props.users.length === 0) {
       axios.get('https://samyrai.free.beeceptor.com/users').then(response => {
-        debugger
         props.setUsers([...response.data])
       })
     }
