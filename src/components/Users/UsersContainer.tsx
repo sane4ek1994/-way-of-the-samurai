@@ -1,4 +1,5 @@
-import { Users } from '.'
+// import { Users } from '.'
+import { Users } from './usersClass'
 import { connect } from 'react-redux'
 import { followAC, unFollowAC, setUsersAC } from '../../redux/reducers/usersPage-reducer'
 
