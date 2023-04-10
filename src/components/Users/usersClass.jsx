@@ -2,10 +2,9 @@ import React from 'react'
 import axios from 'axios'
 
 export class Users extends React.Component {
-  constructor(props) {
-    super(props)
+  componentDidMount() {
     axios.get('https://samyrai.free.beeceptor.com/users').then(response => {
-      props.setUsers([...response.data.users])
+      this.props.setUsers([...response.data.users])
     })
   }
 
