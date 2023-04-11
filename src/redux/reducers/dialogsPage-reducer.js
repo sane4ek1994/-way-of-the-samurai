@@ -41,9 +41,13 @@ const initialState = {
 export const dialogsReducer = (state = initialState, action) => {
   switch (action.type) {
     case SEND_MESSAGE:
+      const newMessage = {
+        id: Date.now(),
+        message: state.newMessageBody
+      }
       return {
         ...state,
-        messages: [...state.messages, { id: Date.now(), message: state.newMessageBody }],
+        messages: [...state.messages, newMessage],
         newMessageBody: ''
       }
 
@@ -52,7 +56,6 @@ export const dialogsReducer = (state = initialState, action) => {
         ...state,
         newMessageBody: action.message
       }
-
     default:
       return state
   }
