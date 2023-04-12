@@ -3,8 +3,6 @@ import { connect } from 'react-redux'
 import { updateNewMessageBodyCreator, sendMessageCreator } from '../../redux/reducers'
 
 const mapStateToProps = (state: any) => {
-  console.log(state)
-
   return {
     newMessageBody: state.dialogsReducer.newMessageBody,
     dialogs: state.dialogsReducer.dialogsData,
