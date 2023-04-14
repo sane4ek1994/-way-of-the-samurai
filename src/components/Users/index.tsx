@@ -1,17 +1,28 @@
-import axios from 'axios'
+import styles from './users.module.css'
 
 export const Users = (props: any) => {
-  const getUsers = () => {
-    if (props.users.length === 0) {
-      axios.get('https://samyrai.free.beeceptor.com/users').then(response => {
-        props.setUsers([...response.data])
-      })
-    }
-  }
+  let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
 
+  let pages = []
+  for (let i = 1; i <= pagesCount; i++) {
+    pages.push(i)
+  }
   return (
     <div>
-      <button onClick={getUsers}>Get users</button>
+      <div>
+        {pages.map((page: number) => {
+          return (
+            <span
+              onClick={() => {
+                props.onPageChanged(page)
+              }}
+              className={props.currentPage === page ? styles.page_active : undefined}
+            >
+              {page}
+            </span>
+          )
+        })}
+      </div>
       {props.users.map((user: any) => (
         <div key={user.id}>
           <span>
