@@ -21,7 +21,7 @@ export const Messages = (props: any) => {
   }
 
   const onSendMessageClick = () => {
-    props.onSendMessageClick()
+    props.sendMessage()
   }
 
   return (
