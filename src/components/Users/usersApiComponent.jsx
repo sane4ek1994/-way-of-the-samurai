@@ -7,7 +7,9 @@ export class UsersAPIComponent extends React.Component {
   componentDidMount() {
     this.props.toggleIsFetching(true)
     axios
-      .get(`https://samyrai.free.beeceptor.com/users/${this.props.currentPage}&count=${this.props.pageSize}`)
+      .get(
+        `https://social-network.samuraijs.com/api/1.0/users/&page=${this.props.currentPage}&count=${this.props.pageSize}`
+      )
       .then(response => {
         this.props.toggleIsFetching(false)
         this.props.setUsers([...response.data.users])
@@ -17,10 +19,12 @@ export class UsersAPIComponent extends React.Component {
   onPageChanged = pageNumber => {
     this.props.setCurrentPage(pageNumber)
     this.props.toggleIsFetching(true)
-    axios.get(`https://samyrai.free.beeceptor.com/users/${pageNumber}&count=${this.props.pageSize}`).then(response => {
-      this.props.toggleIsFetching(false)
-      this.props.setUsers([...response.data.users])
-    })
+    axios
+      .get(`https://samyrai.free.beeceptor.com/users/&page=${pageNumber}&count=${this.props.pageSize}`)
+      .then(response => {
+        this.props.toggleIsFetching(false)
+        this.props.setUsers([...response.data.users])
+      })
   }
 
   render() {
