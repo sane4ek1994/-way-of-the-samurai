@@ -1,4 +1,21 @@
+.page_wrapper {
+  width: 200px;
+  overflow-x: scroll;
+}
+.page {
+  padding: 0 2px;
+  color: white;
+  cursor: pointer;
+}
+
 .page_active {
+  padding: 0 2px;
   font-size: 20px;
   color: aqua;
+}
+
+.img_avatar {
+  display: block;
+  width: 40px;
+  height: 40px;
 }
