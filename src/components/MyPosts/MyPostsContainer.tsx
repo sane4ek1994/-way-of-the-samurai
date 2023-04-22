@@ -9,13 +9,6 @@ const mapStateToProps = (state: any) => {
   }
 }
 
-// const mapDispatchToProps = (dispatch: any) => {
-//   return {
-//     addPosts: () => dispatch(addPostsActionCreator()),
-//     setChangeText: (textPost: string) => dispatch(setChangeTextActionCreator(textPost))
-//   }
-// }
-
 export const MyPostsContainer = connect(mapStateToProps, {
   addPosts,
   setChangeText
