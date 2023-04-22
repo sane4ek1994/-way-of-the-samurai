@@ -3,7 +3,6 @@ import userAvatar from '../../assets/images/user_default.png'
 import styles from './users.module.css'
 
 export const Users = (props: any) => {
-  console.log(props)
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
 
   let pages = []
