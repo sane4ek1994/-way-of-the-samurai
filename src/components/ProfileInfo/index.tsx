@@ -9,12 +9,13 @@ export const ProfileInfo = (props: any) => {
   return (
     <div className={styles.about}>
       <div className='avatar_box'>
-        <img className={styles.avatar} src={props.profile.photos.large} alt='' />
+        <img className={styles.avatar} src={props.profile.photos.large} alt={props.profile.fullName} />
       </div>
       <div className={styles.info}>
-        <div className='name'>Name: Alex</div>
+        <div className='name'>Name: {props.profile.fullName}</div>
         <div className='age'> Age: 28</div>
-        <p className={styles.descr}>About me: Hello I`m Alex</p>
+        <p className={styles.descr}>About me: {props.profile.aboutMe}</p>
+        <div className={styles.social}>Social: {props.profile.contacts.github}</div>
       </div>
     </div>
   )
