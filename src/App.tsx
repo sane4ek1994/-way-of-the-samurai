@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import { Header, Navbar, Footer } from './components'
 import { News, SettingPage, Music } from './pages'
-import { ProfileContainer } from './pages/Profile/profileContainer'
+import ProfileContainer from './pages/Profile/profileContainer'
 import { MessagesContainer } from './pages/Messages/MessagesContainer'
 import { UsersContainer } from './components/Users/UsersContainer'
 
@@ -15,7 +15,7 @@ const App = (props: any) => {
       <Navbar friendsData={friendsData} />
       <main className='main'>
         <Routes>
-          <Route path='/profile' element={<ProfileContainer store={props.store} />} />
+          <Route path='/profile/:userId?' element={<ProfileContainer store={props.store} />} />
           <Route path='/users' element={<UsersContainer store={props.store} />} />
           <Route path='/messages' element={<MessagesContainer store={props.store} />} />
           <Route path='/news' element={<News />} />
