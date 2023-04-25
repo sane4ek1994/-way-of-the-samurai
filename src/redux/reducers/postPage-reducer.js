@@ -1,5 +1,6 @@
 const ADD_POST = 'ADD_POST'
 const UPDATE_POST_TEXT = 'UPDATE_POST_TEXT'
+const SET_USERS_PROFILE = 'SET_USERS_PROFILE'
 
 const initialState = {
   postData: [
@@ -15,7 +16,8 @@ const initialState = {
       text: 'What is your nature name?'
     }
   ],
-  postText: 'alone samuray way |`_`|'
+  postText: 'alone samuray way |`_`|',
+  profile: null
 }
 
 export const postReducer = (state = initialState, action) => {
@@ -39,6 +41,12 @@ export const postReducer = (state = initialState, action) => {
         postText: action.textPost
       }
 
+    case SET_USERS_PROFILE:
+      return {
+        ...state,
+        profile: action.profile
+      }
+
     default:
       return state
   }
@@ -46,3 +54,4 @@ export const postReducer = (state = initialState, action) => {
 
 export const addPosts = () => ({ type: ADD_POST })
 export const setChangeText = textPost => ({ type: UPDATE_POST_TEXT, textPost })
+export const setUserProfile = profile => ({ type: SET_USERS_PROFILE, profile })

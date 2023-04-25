@@ -8,7 +8,7 @@ export const Navbar = (props: any) => {
     <nav className={styles.nav}>
       <ul className={styles.nav_list}>
         <li className={styles.nav_list__item}>
-          <NavLink to='/' className={({ isActive }) => (isActive ? styles.active : styles.nav_list__link)}>
+          <NavLink to='/profile' className={({ isActive }) => (isActive ? styles.active : styles.nav_list__link)}>
             Profile
           </NavLink>
         </li>
