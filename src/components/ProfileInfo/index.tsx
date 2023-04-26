@@ -1,10 +1,10 @@
-import React from 'react'
+import { Loader } from '../../common/preloader/loader'
 
 import styles from './profileInfo.module.css'
 
 export const ProfileInfo = (props: any) => {
   if (!props.profile) {
-    return <div>Нет данных!</div>
+    return <Loader />
   }
   return (
     <div className={styles.about}>
