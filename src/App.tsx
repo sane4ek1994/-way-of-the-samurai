@@ -1,9 +1,10 @@
 import { Routes, Route } from 'react-router-dom'
-import { Header, Navbar, Footer } from './components'
+import { Navbar, Footer } from './components'
 import { News, SettingPage, Music } from './pages'
 import ProfileContainer from './pages/Profile/profileContainer'
 import { MessagesContainer } from './pages/Messages/MessagesContainer'
 import { UsersContainer } from './components/Users/UsersContainer'
+import HeaderContainer from './components/Header/headerContainer'
 
 import './App.css'
 
@@ -11,7 +12,7 @@ const App = (props: any) => {
   const friendsData = props.store.getState().asideReducer.friendsData
   return (
     <div className='app-wrapper'>
-      <Header />
+      <HeaderContainer />
       <Navbar friendsData={friendsData} />
       <main className='main'>
         <Routes>
