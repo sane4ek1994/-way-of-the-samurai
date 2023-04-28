@@ -1,11 +1,12 @@
 import { combineReducers, createStore } from 'redux'
-import { asideReducer, dialogsReducer, postReducer, usersReducer } from './reducers'
+import { asideReducer, dialogsReducer, postReducer, usersReducer, authReducer } from './reducers'
 
 const reducers = combineReducers({
   dialogsReducer,
   postReducer,
   asideReducer,
-  usersReducer
+  usersReducer,
+  authReducer
 })
 
 export const store = createStore(reducers)
