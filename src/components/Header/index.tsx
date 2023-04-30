@@ -12,7 +12,7 @@ export const Header = (props: any) => {
           alt='logo'
         />
       </NavLink>
-      <NavLink to='/auth/me' className={styles.login}>
+      <NavLink to='/login' className={styles.login}>
         {props.isAuth ? props.login : 'Login in'}
       </NavLink>
     </header>
