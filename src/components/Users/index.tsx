@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import axios from 'axios'
 import userAvatar from '../../assets/images/user_default.png'
 
 import styles from './users.module.css'
@@ -9,6 +10,40 @@ export const Users = (props: any) => {
   let pages = []
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i)
+  }
+
+  const isUnfollow = (id: any) => {
+    axios
+      .delete(`https://social-network.samuraijs.com/api/1.0/follow/${id}`, {
+        withCredentials: true,
+        headers: {
+          'API-KEY': '6af0ecdb-9076-4ada-b256-5e2ede0d750f'
+        }
+      })
+      .then(response => {
+        if (response.data.resultCode === 0) {
+          props.unFollow(id)
+        }
+      })
+  }
+
+  const isFollow = (id: any) => {
+    axios
+      .post(
+        `https://social-network.samuraijs.com/api/1.0/follow/${id}`,
+        {},
+        {
+          withCredentials: true,
+          headers: {
+            'API-KEY': '6af0ecdb-9076-4ada-b256-5e2ede0d750f'
+          }
+        }
+      )
+      .then(response => {
+        if (response.data.resultCode === 0) {
+          props.follow(id)
+        }
+      })
   }
   return (
     <div>
@@ -39,10 +74,10 @@ export const Users = (props: any) => {
               </NavLink>
             </div>
             <div>
-              {user.isFollow ? (
-                <button onClick={() => props.unFollow(user.id)}>Unfollow</button>
+              {user.followed ? (
+                <button onClick={() => isUnfollow(user.id)}>Unfollow</button>
               ) : (
-                <button onClick={() => props.follow(user.id)}>Follow</button>
+                <button onClick={() => isFollow(user.id)}>Follow</button>
               )}
             </div>
           </span>
