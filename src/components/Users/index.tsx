@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom'
-import axios from 'axios'
 import userAvatar from '../../assets/images/user_default.png'
 
 import styles from './users.module.css'
+import { userAPI } from '../../api/api'
 
 export const Users = (props: any) => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
@@ -13,37 +13,19 @@ export const Users = (props: any) => {
   }
 
   const isUnfollow = (id: any) => {
-    axios
-      .delete(`https://social-network.samuraijs.com/api/1.0/follow/${id}`, {
-        withCredentials: true,
-        headers: {
-          'API-KEY': '6af0ecdb-9076-4ada-b256-5e2ede0d750f'
-        }
-      })
-      .then(response => {
-        if (response.data.resultCode === 0) {
-          props.unFollow(id)
-        }
-      })
+    userAPI.unFollowUser(id).then(resultCode => {
+      if (resultCode === 0) {
+        props.unFollow(id)
+      }
+    })
   }
 
   const isFollow = (id: any) => {
-    axios
-      .post(
-        `https://social-network.samuraijs.com/api/1.0/follow/${id}`,
-        {},
-        {
-          withCredentials: true,
-          headers: {
-            'API-KEY': '6af0ecdb-9076-4ada-b256-5e2ede0d750f'
-          }
-        }
-      )
-      .then(response => {
-        if (response.data.resultCode === 0) {
-          props.follow(id)
-        }
-      })
+    userAPI.followUser(id).then(resultCode => {
+      if (resultCode === 0) {
+        props.follow(id)
+      }
+    })
   }
   return (
     <div>
