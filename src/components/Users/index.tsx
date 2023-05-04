@@ -13,18 +13,22 @@ export const Users = (props: any) => {
   }
 
   const isUnfollow = (id: any) => {
+    props.toggleIsFollowingInProgress(true, id)
     userAPI.unFollowUser(id).then(resultCode => {
       if (resultCode === 0) {
         props.unFollow(id)
       }
+      props.toggleIsFollowingInProgress(false, id)
     })
   }
 
   const isFollow = (id: any) => {
+    props.toggleIsFollowingInProgress(true, id)
     userAPI.followUser(id).then(resultCode => {
       if (resultCode === 0) {
         props.follow(id)
       }
+      props.toggleIsFollowingInProgress(false, id)
     })
   }
   return (
@@ -57,9 +61,19 @@ export const Users = (props: any) => {
             </div>
             <div>
               {user.followed ? (
-                <button onClick={() => isUnfollow(user.id)}>Unfollow</button>
+                <button
+                  disabled={props.followingInProgress.some((id: any) => id === user.id)}
+                  onClick={() => isUnfollow(user.id)}
+                >
+                  Unfollow
+                </button>
               ) : (
-                <button onClick={() => isFollow(user.id)}>Follow</button>
+                <button
+                  disabled={props.followingInProgress.some((id: any) => id === user.id)}
+                  onClick={() => isFollow(user.id)}
+                >
+                  Follow
+                </button>
               )}
             </div>
           </span>
