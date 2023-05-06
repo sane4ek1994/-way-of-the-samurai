@@ -91,17 +91,17 @@ export const setTotalUsersCount = totalUsersCount => ({ type: SET_TOTAL_USERS_CO
 export const getUsers = (pageNumber, pageSize) => dispatch => {
   dispatch(toggleIsFetching(true))
 
-  userAPI.getUsers(pageNumber, pageSize).then(data => {
+  userAPI.getUsers(pageNumber, pageSize).then(response => {
     dispatch(toggleIsFetching(false))
-    dispatch(setUsers([...data.items]))
-    dispatch(setTotalUsersCount(data.totalCount))
+    dispatch(setUsers([...response.data.items]))
+    dispatch(setTotalUsersCount(response.data.totalCount))
   })
 }
 
 export const follow = id => dispatch => {
   dispatch(toggleIsFollowingInProgress(true, id))
-  userAPI.unFollowUser(id).then(resultCode => {
-    if (resultCode === 0) {
+  userAPI.unFollowUser(id).then(response => {
+    if (response.data.resultCode === 0) {
       dispatch(followSuccess(id))
     }
     dispatch(toggleIsFollowingInProgress(false, id))
@@ -110,8 +110,8 @@ export const follow = id => dispatch => {
 
 export const unFollow = id => dispatch => {
   dispatch(toggleIsFollowingInProgress(true, id))
-  userAPI.unFollowSuccess(id).then(resultCode => {
-    if (resultCode === 0) {
+  userAPI.unFollowSuccess(id).then(response => {
+    if (response.data.resultCode === 0) {
       dispatch(unFollowSuccess(id))
     }
     dispatch(toggleIsFollowingInProgress(false, id))
