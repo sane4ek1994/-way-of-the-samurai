@@ -5,15 +5,7 @@ import { Users } from '.'
 import { Loader } from '../../common/preloader/loader'
 import { getUsers } from '../../redux/reducers/usersPage-reducer'
 
-import {
-  followSuccess,
-  unFollowSuccess,
-  setUsers,
-  setCurrentPage,
-  toggleIsFetching,
-  setTotalUsersCount,
-  toggleIsFollowingInProgress
-} from '../../redux/reducers/usersPage-reducer'
+import { setCurrentPage, setTotalUsersCount } from '../../redux/reducers/usersPage-reducer'
 
 class UsersAPIContainer extends React.Component {
   componentDidMount() {
@@ -55,12 +47,7 @@ const mapStateToProps = state => {
 }
 
 export const UsersContainer = connect(mapStateToProps, {
-  followSuccess,
-  unFollowSuccess,
-  setUsers,
   setCurrentPage,
   setTotalUsersCount,
-  toggleIsFetching,
-  toggleIsFollowingInProgress,
   getUsers
 })(UsersAPIContainer)
