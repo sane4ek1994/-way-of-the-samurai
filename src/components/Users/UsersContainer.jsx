@@ -36,7 +36,6 @@ class UsersAPIContainer extends React.Component {
           users={this.props.users}
           follow={this.props.followSuccess}
           unFollow={this.props.unFollowSuccess}
-          pages={this.pages}
           followingInProgress={this.props.followingInProgress}
         />
       </>
