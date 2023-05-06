@@ -2,7 +2,6 @@ import { NavLink } from 'react-router-dom'
 import userAvatar from '../../assets/images/user_default.png'
 
 import styles from './users.module.css'
-import { userAPI } from '../../api/api'
 
 export const Users = (props: any) => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
@@ -12,24 +11,12 @@ export const Users = (props: any) => {
     pages.push(i)
   }
 
-  const isUnfollow = (id: any) => {
-    props.toggleIsFollowingInProgress(true, id)
-    userAPI.unFollowUser(id).then(resultCode => {
-      if (resultCode === 0) {
-        props.unFollow(id)
-      }
-      props.toggleIsFollowingInProgress(false, id)
-    })
+  const isUnfollow = (id: number) => {
+    props.unFollow(id)
   }
 
-  const isFollow = (id: any) => {
-    props.toggleIsFollowingInProgress(true, id)
-    userAPI.followUser(id).then(resultCode => {
-      if (resultCode === 0) {
-        props.follow(id)
-      }
-      props.toggleIsFollowingInProgress(false, id)
-    })
+  const isFollow = (id: number) => {
+    props.follow(id)
   }
   return (
     <div>
@@ -62,14 +49,14 @@ export const Users = (props: any) => {
             <div>
               {user.followed ? (
                 <button
-                  disabled={props.followingInProgress.some((id: any) => id === user.id)}
+                  disabled={props.followingInProgress.some((id: number) => id === user.id)}
                   onClick={() => isUnfollow(user.id)}
                 >
                   Unfollow
                 </button>
               ) : (
                 <button
-                  disabled={props.followingInProgress.some((id: any) => id === user.id)}
+                  disabled={props.followingInProgress.some((id: number) => id === user.id)}
                   onClick={() => isFollow(user.id)}
                 >
                   Follow
