@@ -8,7 +8,7 @@ import HeaderContainer from './components/Header/headerContainer'
 
 import './App.css'
 
-const App = (props: any) => {
+const App = props => {
   const friendsData = props.store.getState().asideReducer.friendsData
   return (
     <div className='app-wrapper'>

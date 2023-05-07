@@ -21,9 +21,10 @@ export const Users = (props: any) => {
   return (
     <div>
       <div className={styles.page_wrapper}>
-        {pages.map((page: number) => {
+        {pages.map((page: number, index) => {
           return (
             <span
+              key={index}
               className={props.currentPage === page ? styles.page_active : styles.page}
               onClick={() => {
                 props.onPageChanged(page)
