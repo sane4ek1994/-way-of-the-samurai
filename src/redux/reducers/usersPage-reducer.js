@@ -100,7 +100,7 @@ export const getUsers = (pageNumber, pageSize) => dispatch => {
 
 export const follow = id => dispatch => {
   dispatch(toggleIsFollowingInProgress(true, id))
-  userAPI.unFollowUser(id).then(response => {
+  userAPI.followUser(id).then(response => {
     if (response.data.resultCode === 0) {
       dispatch(followSuccess(id))
     }
@@ -110,7 +110,7 @@ export const follow = id => dispatch => {
 
 export const unFollow = id => dispatch => {
   dispatch(toggleIsFollowingInProgress(true, id))
-  userAPI.unFollowSuccess(id).then(response => {
+  userAPI.unFollowUser(id).then(response => {
     if (response.data.resultCode === 0) {
       dispatch(unFollowSuccess(id))
     }

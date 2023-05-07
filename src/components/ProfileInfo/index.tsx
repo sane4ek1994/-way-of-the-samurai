@@ -1,4 +1,5 @@
 import { Loader } from '../../common/preloader/loader'
+import userAvatar from '../../assets/images/user_default.png'
 
 import styles from './profileInfo.module.css'
 
@@ -9,7 +10,11 @@ export const ProfileInfo = (props: any) => {
   return (
     <div className={styles.about}>
       <div className='avatar_box'>
-        <img className={styles.avatar} src={props.profile.photos.large} alt={props.profile.fullName} />
+        <img
+          className={styles.avatar}
+          src={props.profile.photos.small != null ? props.profile.photos.small : userAvatar}
+          alt={props.profile.fullName}
+        />
       </div>
       <div className={styles.info}>
         <div className='name'>Name: {props.profile.fullName}</div>
