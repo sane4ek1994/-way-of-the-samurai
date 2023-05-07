@@ -1,9 +1,9 @@
 import React from 'react'
-
 import { Profile } from '.'
 import { withRouter } from '../../utils/withRouter'
 import { connect } from 'react-redux'
 import { getUserProfile } from '../../redux/reducers/postPage-reducer'
+import { withAuthRedirect } from '../../utils/withAuthRedirect'
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
@@ -19,8 +19,10 @@ class ProfileContainer extends React.Component {
   }
 }
 
+const AuthRedirectComponent = withAuthRedirect(ProfileContainer)
+
 let mapStateToProps = state => ({
   profile: state.postReducer.profile
 })
 
-export default connect(mapStateToProps, { getUserProfile })(withRouter(ProfileContainer))
+export default connect(mapStateToProps, { getUserProfile })(withRouter(AuthRedirectComponent))
