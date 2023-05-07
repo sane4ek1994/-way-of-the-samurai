@@ -12,12 +12,10 @@ export const Users = (props: any) => {
   }
 
   const isUnfollow = (id: number) => {
-    debugger
     props.unFollow(id)
   }
 
   const isFollow = (id: number) => {
-    debugger
     props.follow(id)
   }
   return (
