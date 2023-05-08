@@ -1,5 +1,4 @@
 import { useRef } from 'react'
-import { Navigate } from 'react-router-dom'
 import { DialogItem, TDialogItem } from './DialogItem'
 import { MessageItem, TMessageItem } from './MessageItem'
 
@@ -22,10 +21,6 @@ export const Messages = (props: any) => {
 
   const onSendMessageClick = () => {
     props.sendMessage()
-  }
-
-  if (!props.isAuth) {
-    return <Navigate to='/login'/>
   }
 
   return (

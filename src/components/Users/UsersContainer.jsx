@@ -1,11 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Navigate } from 'react-router-dom'
 import { Users } from '.'
 import { Loader } from '../../common/preloader/loader'
 import { getUsers } from '../../redux/reducers/usersPage-reducer'
 
 import { setCurrentPage, setTotalUsersCount, follow, unFollow } from '../../redux/reducers/usersPage-reducer'
+import { withAuthRedirect } from '../../utils/withAuthRedirect'
+import { compose } from 'redux'
 
 class UsersAPIContainer extends React.Component {
   componentDidMount() {
@@ -17,9 +18,6 @@ class UsersAPIContainer extends React.Component {
   }
 
   render() {
-    if (!this.props.isAuth) {
-      return <Navigate to='/login' />
-    }
     return (
       <>
         {this.props.isFetching ? <Loader /> : null}
@@ -45,15 +43,17 @@ const mapStateToProps = state => {
     totalUsersCount: state.usersReducer.totalUsersCount,
     currentPage: state.usersReducer.currentPage,
     isFetching: state.usersReducer.isFetching,
-    followingInProgress: state.usersReducer.followingInProgress,
-    isAuth: state.authReducer.isAuth
+    followingInProgress: state.usersReducer.followingInProgress
   }
 }
 
-export const UsersContainer = connect(mapStateToProps, {
-  setCurrentPage,
-  setTotalUsersCount,
-  getUsers,
-  follow,
-  unFollow
-})(UsersAPIContainer)
+export const UsersContainer = compose(
+  connect(mapStateToProps, {
+    setCurrentPage,
+    setTotalUsersCount,
+    getUsers,
+    follow,
+    unFollow
+  }),
+  withAuthRedirect
+)(UsersAPIContainer)
