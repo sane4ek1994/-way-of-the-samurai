@@ -35,8 +35,6 @@ class UsersAPIContainer extends React.Component {
   }
 }
 
-const AuthRedirectComponent = withAuthRedirect(UsersAPIContainer)
-
 const mapStateToProps = state => {
   return {
     users: state.usersReducer.users,
@@ -48,10 +46,12 @@ const mapStateToProps = state => {
   }
 }
 
-export const UsersContainer = connect(mapStateToProps, {
-  setCurrentPage,
-  setTotalUsersCount,
-  getUsers,
-  follow,
-  unFollow
-})(AuthRedirectComponent)
+export const UsersContainer = withAuthRedirect(
+  connect(mapStateToProps, {
+    setCurrentPage,
+    setTotalUsersCount,
+    getUsers,
+    follow,
+    unFollow
+  })(UsersAPIContainer)
+)
