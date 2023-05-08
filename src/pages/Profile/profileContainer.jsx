@@ -19,10 +19,8 @@ class ProfileContainer extends React.Component {
   }
 }
 
-const AuthRedirectComponent = withAuthRedirect(ProfileContainer)
-
 let mapStateToProps = state => ({
   profile: state.postReducer.profile
 })
 
-export default connect(mapStateToProps, { getUserProfile })(withRouter(AuthRedirectComponent))
+export default withAuthRedirect(connect(mapStateToProps, { getUserProfile })(withRouter(ProfileContainer)))
