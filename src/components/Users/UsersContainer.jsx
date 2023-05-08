@@ -6,6 +6,7 @@ import { getUsers } from '../../redux/reducers/usersPage-reducer'
 
 import { setCurrentPage, setTotalUsersCount, follow, unFollow } from '../../redux/reducers/usersPage-reducer'
 import { withAuthRedirect } from '../../utils/withAuthRedirect'
+import { compose } from 'redux'
 
 class UsersAPIContainer extends React.Component {
   componentDidMount() {
@@ -46,12 +47,13 @@ const mapStateToProps = state => {
   }
 }
 
-export const UsersContainer = withAuthRedirect(
+export const UsersContainer = compose(
   connect(mapStateToProps, {
     setCurrentPage,
     setTotalUsersCount,
     getUsers,
     follow,
     unFollow
-  })(UsersAPIContainer)
-)
+  }),
+  withAuthRedirect
+)(UsersAPIContainer)

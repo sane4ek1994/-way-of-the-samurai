@@ -2,6 +2,7 @@ import { Messages } from '.'
 import { connect } from 'react-redux'
 import { updateNewMessageBody, sendMessage } from '../../redux/reducers'
 import { withAuthRedirect } from '../../utils/withAuthRedirect'
+import { compose } from 'redux'
 
 const mapStateToProps = state => {
   return {
@@ -11,9 +12,10 @@ const mapStateToProps = state => {
   }
 }
 
-export const MessagesContainer = withAuthRedirect(
+export const MessagesContainer = compose(
   connect(mapStateToProps, {
     updateNewMessageBody,
     sendMessage
-  })(Messages)
-)
+  }),
+  withAuthRedirect
+)(Messages)
