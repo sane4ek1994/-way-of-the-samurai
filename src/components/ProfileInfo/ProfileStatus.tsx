@@ -1,7 +1,11 @@
 import React from 'react'
 import { useState } from 'react'
 
-export const ProfileStatus = (props: any) => {
+type TPropsStatus = {
+  status: string
+}
+
+export const ProfileStatus = (props: TPropsStatus) => {
   const [editMode, setEditMode] = useState(false)
 
   const activateEditMode = () => setEditMode(true)
