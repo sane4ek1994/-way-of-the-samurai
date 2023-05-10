@@ -1,4 +1,5 @@
 import { Loader } from '../../common/preloader/loader'
+import { ProfileStatus } from './ProfileStatus'
 import userAvatar from '../../assets/images/user_default.png'
 
 import styles from './profileInfo.module.css'
@@ -15,6 +16,7 @@ export const ProfileInfo = (props: any) => {
           src={props.profile.photos.small != null ? props.profile.photos.small : userAvatar}
           alt={props.profile.fullName}
         />
+        <ProfileStatus status='Hello status!' />
       </div>
       <div className={styles.info}>
         <div className='name'>Name: {props.profile.fullName}</div>
