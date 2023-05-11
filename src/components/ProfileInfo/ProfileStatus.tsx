@@ -1,26 +1,41 @@
-import React from 'react'
 import { useState } from 'react'
 
 type TPropsStatus = {
   status: string
+  updateUserStatus: () => void
 }
 
 export const ProfileStatus = (props: TPropsStatus) => {
   const [editMode, setEditMode] = useState(false)
+  const [status, setStatus] = useState(props.status)
 
   const activateEditMode = () => setEditMode(true)
-  const deactivateEditMode = () => setEditMode(false)
+
+  const deactivateEditMode = () => {
+    setEditMode(false)
+    props.updateUserStatus()
+  }
+
+  const onStatusChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+    setStatus(event.currentTarget.value)
+  }
 
   return (
     <>
       {!editMode && (
         <div>
-          <span onDoubleClick={() => activateEditMode()}>{props.status}</span>
+          <span onDoubleClick={() => activateEditMode()}>{props.status || '------'}</span>
         </div>
       )}
       {editMode && (
         <div>
-          <input autoFocus={true} onBlur={() => deactivateEditMode()} value={props.status} />
+          <input
+            type='text'
+            autoFocus={true}
+            onBlur={() => deactivateEditMode()}
+            onChange={onStatusChange}
+            value={status}
+          />
         </div>
       )}
     </>

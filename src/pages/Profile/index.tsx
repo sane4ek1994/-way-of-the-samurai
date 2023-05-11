@@ -7,7 +7,7 @@ export const Profile = (props: any) => {
   return (
     <div className='profile'>
       <ProfileImage />
-      <ProfileInfo profile={profile} />
+      <ProfileInfo status={props.status} updateUserStatus={props.updateUserStatus} profile={profile} />
       <MyPostsContainer store={props.store} />
     </div>
   )

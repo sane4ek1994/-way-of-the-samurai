@@ -16,7 +16,7 @@ export const ProfileInfo = (props: any) => {
           src={props.profile.photos.small != null ? props.profile.photos.small : userAvatar}
           alt={props.profile.fullName}
         />
-        <ProfileStatus status='Hello status!' />
+        <ProfileStatus updateUserStatus={props.updateUserStatus} status={props.status} />
       </div>
       <div className={styles.info}>
         <div className='name'>Name: {props.profile.fullName}</div>
