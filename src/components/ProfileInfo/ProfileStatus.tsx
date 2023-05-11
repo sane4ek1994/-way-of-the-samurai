@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 type TPropsStatus = {
   status: string
-  updateUserStatus: () => void
+  updateUserStatus: (string: string) => void
 }
 
 export const ProfileStatus = (props: TPropsStatus) => {
@@ -12,8 +12,8 @@ export const ProfileStatus = (props: TPropsStatus) => {
   const activateEditMode = () => setEditMode(true)
 
   const deactivateEditMode = () => {
+    props.updateUserStatus(status)
     setEditMode(false)
-    props.updateUserStatus()
   }
 
   const onStatusChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {

@@ -80,9 +80,8 @@ export const getUserStatus = userId => dispatch => {
 
 export const updateUserStatus = userId => dispatch => {
   profileAPI.setUserStatus(userId).then(response => {
-    debugger
     if (response.data.resultCode === 0) {
-      dispatch(setUserStatus(response.data))
+      dispatch(setUserStatus(response.data.message))
     }
   })
 }
