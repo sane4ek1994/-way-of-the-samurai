@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 type TPropsStatus = {
   status: string
@@ -12,19 +12,22 @@ export const ProfileStatus = (props: TPropsStatus) => {
   const activateEditMode = () => setEditMode(true)
 
   const deactivateEditMode = () => {
-    props.updateUserStatus(status)
     setEditMode(false)
+    props.updateUserStatus(status)
   }
 
   const onStatusChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-    setStatus(event.currentTarget.value)
+    setStatus(event.target.value)
   }
+  useEffect(() => {
+    console.log('update')
+  }, [status])
 
   return (
     <>
       {!editMode && (
         <div>
-          <span onDoubleClick={() => activateEditMode()}>{props.status || '------'}</span>
+          <span onDoubleClick={() => activateEditMode()}>{status || '------'}</span>
         </div>
       )}
       {editMode && (
