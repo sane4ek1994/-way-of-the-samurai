@@ -1,10 +1,16 @@
 import { Formik, Field, Form } from 'formik'
+import * as Yup from 'yup'
 
 import styles from './loginForm.module.css'
+
+const SignupSchema = Yup.object().shape({
+  login: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required')
+})
 
 export const LoginForm = () => {
   return (
     <Formik
+      validationSchema={SignupSchema}
       initialValues={{
         login: '',
         password: '',
