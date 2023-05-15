@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 type TPropsStatus = {
   status: string
@@ -19,9 +19,6 @@ export const ProfileStatus = (props: TPropsStatus) => {
   const onStatusChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     setStatus(event.target.value)
   }
-  useEffect(() => {
-    console.log('update')
-  }, [status])
 
   return (
     <>

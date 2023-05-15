@@ -34,8 +34,7 @@ const initialState = {
     { id: '2', message: 'How are you?' },
     { id: '3', message: 'Yo!!' },
     { id: '4', message: 'qq!)' }
-  ],
-  newMessageBody: 'react Yo!'
+  ]
 }
 
 export const dialogsReducer = (state = initialState, action) => {
@@ -43,7 +42,7 @@ export const dialogsReducer = (state = initialState, action) => {
     case SEND_MESSAGE:
       const newMessage = {
         id: Date.now(),
-        message: state.newMessageBody
+        message: action.newMessageBody
       }
       return {
         ...state,
@@ -61,5 +60,5 @@ export const dialogsReducer = (state = initialState, action) => {
   }
 }
 
-export const sendMessage = () => ({ type: SEND_MESSAGE })
+export const sendMessage = newMessageBody => ({ type: SEND_MESSAGE, newMessageBody })
 export const updateNewMessageBody = message => ({ type: UPDATE_NEW_MESSAGE_BODY, message })

@@ -1,26 +1,16 @@
-import { useRef } from 'react'
 import { DialogItem, TDialogItem } from './DialogItem'
 import { MessageItem, TMessageItem } from './MessageItem'
 
 import styles from './messages.module.css'
+import { AddMessageForm } from './MessageForm'
 
-// interface IMessages {
-//   dialogs: TDialogItem[]
-//   messages: TMessageItem[]
-//   store: any
-//   dispatch: (obj: Object) => void
-// }
+type TNewMessageBody = {
+  newMessageBody: string
+}
 
 export const Messages = (props: any) => {
-  let newMessage = useRef<HTMLTextAreaElement>(null)
-
-  const updateNewMessageBody = () => {
-    let message = newMessage.current?.value || ''
-    props.updateNewMessageBody(message)
-  }
-
-  const onSendMessageClick = () => {
-    props.sendMessage()
+  const addNewMessageBody = (values: TNewMessageBody) => {
+    props.sendMessage(values.newMessageBody)
   }
 
   return (
@@ -34,13 +24,7 @@ export const Messages = (props: any) => {
         {props.messages.map((message: TMessageItem) => (
           <MessageItem key={message.id} message={message.message} id={''} />
         ))}
-        <textarea
-          ref={newMessage}
-          value={props.newMessageBody}
-          onChange={updateNewMessageBody}
-          placeholder='Write a message...'
-        />
-        <button onClick={onSendMessageClick}>Post message</button>
+        <AddMessageForm addNewMessageBody={addNewMessageBody} />
       </div>
     </div>
   )
