@@ -1,7 +1,6 @@
 import { profileAPI, userAPI } from '../../api/api'
 
 const ADD_POST = 'ADD_POST'
-const UPDATE_POST_TEXT = 'UPDATE_POST_TEXT'
 const SET_USERS_PROFILE = 'SET_USERS_PROFILE'
 const SET_USER_STATUS = 'SET_USER_STATUS'
 
@@ -19,7 +18,6 @@ const initialState = {
       text: 'What is your nature name?'
     }
   ],
-  postText: 'alone samuray way |`_`|',
   profile: null,
   status: ''
 }
@@ -30,19 +28,13 @@ export const postReducer = (state = initialState, action) => {
       const newPost = {
         id: `${Date.now()}`,
         src: 'https://img3.goodfon.ru/wallpaper/nbig/8/cd/spanch-bob-gubka-bob.jpg',
-        text: state.postText
+        text: action.postText
       }
 
       return {
         ...state,
         postData: [...state.postData, newPost],
         postText: ''
-      }
-
-    case UPDATE_POST_TEXT:
-      return {
-        ...state,
-        postText: action.textPost
       }
 
     case SET_USERS_PROFILE:
@@ -61,8 +53,7 @@ export const postReducer = (state = initialState, action) => {
   }
 }
 
-export const addPosts = () => ({ type: ADD_POST })
-export const setChangeText = textPost => ({ type: UPDATE_POST_TEXT, textPost })
+export const addPosts = postText => ({ type: ADD_POST, postText })
 const setUserProfile = profile => ({ type: SET_USERS_PROFILE, profile })
 const setUserStatus = status => ({ type: SET_USER_STATUS, status })
 

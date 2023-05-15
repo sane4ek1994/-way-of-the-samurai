@@ -1,4 +1,3 @@
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY'
 const SEND_MESSAGE = 'SEND_MESSAGE'
 
 const initialState = {
@@ -50,15 +49,9 @@ export const dialogsReducer = (state = initialState, action) => {
         newMessageBody: ''
       }
 
-    case UPDATE_NEW_MESSAGE_BODY:
-      return {
-        ...state,
-        newMessageBody: action.message
-      }
     default:
       return state
   }
 }
 
 export const sendMessage = newMessageBody => ({ type: SEND_MESSAGE, newMessageBody })
-export const updateNewMessageBody = message => ({ type: UPDATE_NEW_MESSAGE_BODY, message })
