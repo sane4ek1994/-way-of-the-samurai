@@ -1,25 +1,19 @@
 import { Formik, Field, Form } from 'formik'
-import * as Yup from 'yup'
 
 import styles from './loginForm.module.css'
 
-const SignupSchema = Yup.object().shape({
-  login: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required')
-})
-
-export const LoginForm = () => {
+export const LoginForm = (props: any) => {
   return (
     <Formik
-      validationSchema={SignupSchema}
       initialValues={{
-        login: '',
+        email: '',
         password: '',
         isRememberMe: false
       }}
-      onSubmit={values => console.log(values)}
+      onSubmit={values => props.onSubmitLog(values)}
     >
       <Form className={styles.form}>
-        <Field id='login' name='login' placeholder='Login' type='text' />
+        <Field id='email' name='email' placeholder='Email' type='email' />
         <Field id='password' name='password' placeholder='write password' type='password' />
 
         <Field id='isRemember' name='isRememberMe' type='checkbox' />
