@@ -1,26 +1,22 @@
-import { useRef } from 'react'
 import { Post, TPost } from '../Post'
+import { PostForm } from './PostForm'
 
 import styles from './post.module.css'
 
+type TPostText = {
+  postText: string
+}
+
 export const MyPosts = (props: any) => {
-  const newPostElement = useRef<HTMLTextAreaElement>(null)
-
-  const onAddPosts = () => {
-    props.addPosts()
-  }
-
-  const setChangeText = () => {
-    let textPost = newPostElement.current?.value
-    props.setChangeText(textPost)
+  const onAddPosts = (values: TPostText) => {
+    props.addPosts(values.postText)
   }
 
   return (
     <div className={styles.post}>
       <h3>My post</h3>
       <div className={styles.new_post}>
-        <textarea onChange={setChangeText} ref={newPostElement} value={props.postText} className={styles.post__input} />
-        <button onClick={onAddPosts}>Add post</button>
+        <PostForm onAddPosts={onAddPosts} />
       </div>
       <div>
         {props.posts?.map((post: TPost) => (
