@@ -11,7 +11,7 @@ export const ProfileStatus = (props: TPropsStatus) => {
 
   const activateEditMode = () => setEditMode(true)
 
-  const deactivateEditMode = () => {
+  const deactivateEditMode = (): void => {
     setEditMode(false)
     props.updateUserStatus(status)
   }
