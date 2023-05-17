@@ -1,7 +1,6 @@
-import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 import styles from './header.module.css'
-import { NavLink } from 'react-router-dom'
 
 export const Header = (props: any) => {
   return (
@@ -13,7 +12,13 @@ export const Header = (props: any) => {
         />
       </NavLink>
       <NavLink to='/login' className={styles.login}>
-        {props.isAuth ? props.login : 'Login in'}
+        {props.isAuth ? (
+          <div>
+            {props.login} - <button onClick={props.logout}>Log out</button>
+          </div>
+        ) : (
+          'Login in'
+        )}
       </NavLink>
     </header>
   )
