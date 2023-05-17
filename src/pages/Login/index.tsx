@@ -8,7 +8,6 @@ type MapStateToPropsType = {
 
 const Log = (props: any) => {
   const onSubmitLog = (formData: any) => {
-    debugger
     const { email, password, rememberMe } = formData
     props.login(email, password, rememberMe)
   }
