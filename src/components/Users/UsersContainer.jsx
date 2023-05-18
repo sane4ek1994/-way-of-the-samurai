@@ -5,7 +5,6 @@ import { Loader } from '../../common/preloader/loader'
 import { getUsers } from '../../redux/reducers/usersPage-reducer'
 
 import { setCurrentPage, setTotalUsersCount, follow, unFollow } from '../../redux/reducers/usersPage-reducer'
-import { withAuthRedirect } from '../../utils/withAuthRedirect'
 import { compose } from 'redux'
 
 class UsersAPIContainer extends React.Component {
@@ -55,5 +54,4 @@ export const UsersContainer = compose(
     follow,
     unFollow
   }),
-  withAuthRedirect
 )(UsersAPIContainer)
