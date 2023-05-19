@@ -10,8 +10,7 @@ import {
   getTotalUsersCount,
   getCurrentPage,
   getIsFetching,
-  getFollowingInProgress,
-  getUsersListSuperSelector
+  getFollowingInProgress
 } from '../../redux/selectors/usersSelector'
 import { compose } from 'redux'
 
