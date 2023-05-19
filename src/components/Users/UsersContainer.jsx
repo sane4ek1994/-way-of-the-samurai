@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Users } from '.'
 import { Loader } from '../../common/preloader/loader'
 import { getUsers } from '../../redux/reducers/usersPage-reducer'
-import { setCurrentPage, setTotalUsersCount, follow, unFollow } from '../../redux/reducers/usersPage-reducer'
+import { setTotalUsersCount, follow, unFollow } from '../../redux/reducers/usersPage-reducer'
 import {
   getUsersList,
   getPageSize,
@@ -55,7 +55,6 @@ const mapStateToProps = state => {
 
 export const UsersContainer = compose(
   connect(mapStateToProps, {
-    setCurrentPage,
     setTotalUsersCount,
     getUsers,
     follow,
