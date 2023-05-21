@@ -6,10 +6,6 @@ import App from './App'
 import { store } from './redux/redux-store'
 // import { store } from './redux/store'
 
-setInterval(() => {
-  store.dispatch({ type: 'FAKE' })
-}, 1000)
-
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
