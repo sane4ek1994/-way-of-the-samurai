@@ -1,10 +1,9 @@
-import React from 'react'
-import {Header} from '.'
-import {withRouter} from '../../utils/withRouter'
-import {connect} from 'react-redux'
-import {logout} from '../../redux/reducers/auth-Reducer'
+import { Header } from '.'
+import { withRouter } from '../../utils/withRouter'
+import { connect } from 'react-redux'
+import { logout } from '../../redux/reducers/auth-Reducer'
 
-const HeaderContainer = (props) => {
+const HeaderContainer = props => {
   return <Header {...props} />
 }
 
@@ -13,4 +12,4 @@ let mapStateToProps = state => ({
   login: state.authReducer.login
 })
 
-export default connect(mapStateToProps, {  logout })(withRouter(HeaderContainer))
+export default connect(mapStateToProps, { logout })(withRouter(HeaderContainer))

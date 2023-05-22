@@ -19,7 +19,7 @@ export const MyPosts = (props: any) => {
         <PostForm onAddPosts={onAddPosts} />
       </div>
       <div>
-        {props.posts?.map((post: TPost) => (
+        {[...props.posts].reverse().map((post: TPost) => (
           <Post src={post.src} key={post.id} id={''} text={post.text} />
         ))}
       </div>
